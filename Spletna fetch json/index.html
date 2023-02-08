@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+
+
+<html>
+
+<head>
+	<meta charset="UTF-8">
+
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+	<link rel="stylesheet" href="styles.css">
+
+	<script language="javascript" type="text/javascript" src="jQerry/jQerry.js"></script>
+	<script src=https://cdnjs.cloudflare.com/ajax/libs/mathjs/3.3.0/math.min.js></script>
+	<script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script> 
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+
+</head>
+<body>
+	<div id="tooltip" display="none" style="position: absolute; display: none;"></div>
+	<div class="container-fluid" style="background-color: #f3f5f7; margin-top: 1%;" ">
+		<div class="row ">
+			<div class="col-md-6" >
+				<div class="col-md-12 bg-white">
+					<div class="float-right ">			
+						<button style="background-color: white; padding: 0; border: 0; "data-toggle="tooltip0" data-placement="left" title="">
+							<img src="info-icon.svg">
+						</button>
+					</div>		
+					<div class=" obcina-heading-text" style="color:rgb(0,226,148);">Orodje za prikaz internetnih priključkov</div>
+				</div>	
+			</div>
+			<div class="col-md-6 text-center">
+				<div class="col-md-12 bg-white">
+					<p class=" obcina-heading-text"id="izbrana-obcina">-</p>
+				</div>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-md-6 ">	
+					<div class="col-md-12 bg-white " >
+						<div class="custom-control custom-switch custom-switch-md  float-left div-margin-top">
+							<input type="checkbox" class="custom-control-input" id="changeMap1">
+							<label class="custom-control-label" for="changeMap1">Prikaži po rangu</label>
+						</div>
+						<div class="float-right ">
+							<button style="background-color: white; padding: 0; border: 0; "data-toggle="tooltip1" data-placement="left" title="">
+								<img src="info-icon.svg">
+							</button>
+						</div>											
+						<object id="map1"  type="image/svg+xml" data="slomap.svg" ></object>
+					</div>
+					<div class="col-mx  div-margin-top" style="background-color: #f3f5f7;" >
+						<select class=" custom-select dropdown-css" id="lista"  margin-top: 1%;" ></select>	
+						<div class="custom-control custom-switch custom-switch-md  float-left div-margin-top">
+							<input type="checkbox" class="custom-control-input" id="celotnaSlo">
+							<label class="custom-control-label" for="celotnaSlo">Statistika celotne Slovenije</label>
+						</div>
+					</div>	
+			</div>
+			<div class="col-md-6">			
+			  		<div class="row ">
+						<div class="col-md-6 " >
+							<div class="col-md-12 panel  bg-white  ">
+								<div class="panel-heading" style="text-align: right;">			
+									<button style="background-color: white; padding: 0; border: 0; "data-toggle="tooltip2" data-placement="left" title="">
+										<img src="info-icon.svg">
+									</button>	
+									<h4 class="panel-title heading-text">Internetne hitrosti</h4>
+								</div>
+								<div class="panel-content text-center">	
+									<canvas  id="chart1"></canvas>
+								</div>
+								<div class="panel-footer" style="text-align:center">								
+									<div class="custom-control custom-switch custom-switch-md bg-white">
+										<input type="checkbox" class="custom-control-input" id="changeChart1">
+										<label class="custom-control-label "for="changeChart1">Prikaži vse hitrosti</label>
+									  </div>						
+								</div>	
+							</div>
+						</div>
+						<div class="col-md-6  ">
+							<div class="col-md-12 panel bg-white">
+								<div class="panel-heading" style="text-align: right;">			
+									<button style="background-color: white; padding: 0; border: 0; "data-toggle="tooltip3" data-placement="left" title="">
+										<img src="info-icon.svg">
+									</button>			
+									<h4 class="panel-title heading-text">Rang občine</h4>			
+								</div>
+								<div class="panel-content text-center">	
+									<canvas  id="chart2"></canvas>
+								</div>
+								<div class="panel-footer bg-white">	
+									<p style="font-size:2rem;"> <br> </p>		
+								</div>	
+							</div>
+						</div>
+			  		</div>
+			  		<div class="row div-margin-top ">
+						<div class="col-md-6  ">
+							<div class="col-md-12 panel  bg-white  ">
+								<div class="panel-heading"style="text-align: right;">
+									<button style="background-color: white; padding: 0; border: 0; "data-toggle="tooltip4" data-placement="left" title="">
+										<img src="info-icon.svg">
+									</button>			
+									<h4 class="panel-title heading-text">Ponudniki</h4>
+								</div>
+								<div class="panel-content text-center">
+									<canvas  id="chart3"></canvas>
+								</div>	 
+								<div class="panel-footer">
+									<div id="chart3-legend" class="chart-legend"></div>
+								</div>
+							</div>
+						</div>
+						<div class="col-md-6 ">	
+							<div class="col-md-12 panel  bg-white  ">
+								<div class="panel-heading" style="text-align: right;">
+									<button style="background-color: white; padding: 0; border: 0; "data-toggle="tooltip5" data-placement="left" title="">
+										<img src="info-icon.svg">
+									</button>	
+									<h4 class="panel-title heading-text">Vrsta povezljivosti</h4>
+								</div>
+								<div class="panel-content text-center">
+									<canvas  id="chart4"></canvas>
+								</div>			
+								<div class="panel-footer ">
+									<div id="chart4-legend" class="chart-legend"></div>
+								</div>	
+							</div>
+						</div>
+			  		</div>			
+				</div>
+			</div>
+		</div>
+		<div class="row bottom-text-body" >
+			<div class="col-md-12" style="overflow: hidden ;">
+				Podatki se črpajo s spletne strani <a target="_parent"  href="https://egp.gu.gov.si/egp/">https://egp.gu.gov.si/egp/</a>, natančneje iz Zbirnega katastra gospodarske javne infrastrukture, in sicer Podatkov o omrežnih priključnih točkah (Zadnja posodobitev: <a id="datum"></a>). 
+			</div>
+		</div>
+	</div>
+</body>
+
+	<script language="javascript" type="text/javascript" src="common.js"></script>
+	
+	<script language="javascript" type="text/javascript" src="charts.js"></script>
+	<script language="javascript" type="text/javascript" src="map.js"></script>
+
+
+	<script language="javascript" type="text/javascript" src="main.js"></script>
+
+</html>
+
+<!--https://codepen.io/gichuwil/pen/OPBzQQ -->

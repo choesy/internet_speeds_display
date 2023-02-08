@@ -1,0 +1,4 @@
+Parser_za_windows/OPTF
+*.zip
+OPT_*.csv
+.venv
