@@ -10,8 +10,8 @@ from parse_data import parse_the_data
 
 
 def run():
-	password='6OJDGS'
-	username='alekshrastic@gmail.com'
+	password=''
+	username=''
 	with requests.Session() as s:
 
 		csv_opt=glob("OPT_*.csv")
